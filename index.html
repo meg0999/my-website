@@ -144,7 +144,6 @@ input:checked + .slider::before{
     transition:0.3s;
 }
 
-/* DARK */
 body.dark .card{
     background:#111827;
     color:#e5e7eb;
@@ -173,7 +172,7 @@ body.dark .card{
     transition:0.7s ease;
 }
 
-/* CARD HOVER EFFECT */
+/* HOVER */
 .card:hover{
     transform:translateY(-6px) scale(1.01);
     box-shadow:0 15px 35px rgba(0,0,0,0.12);
@@ -193,10 +192,8 @@ html{scroll-behavior:smooth;}
 
 <body>
 
-<!-- PROGRESS BAR -->
 <div id="progress"></div>
 
-<!-- SWITCH -->
 <div class="switch">
     <span>Tamsus režimas</span>
     <label>
@@ -205,7 +202,6 @@ html{scroll-behavior:smooth;}
     </label>
 </div>
 
-<!-- HERO -->
 <div class="hero">
 
 <h1>Ar Tu žinai kaip geriausiai mokytis kalbų?</h1>
@@ -227,8 +223,11 @@ TESTAS
 
 </div>
 
-<!-- CONTENT -->
 <div class="container">
+
+<p style="text-align:center; font-weight:600; margin-bottom:30px;">
+Sužinok daugiau apie Tau tinkantį kalbų mokymosi metodą
+</p>
 
 <div class="card">
 <h2>STRUKTŪRINIS METODAS</h2>
@@ -275,7 +274,7 @@ Bendravimas gyvai
 
 <div class="block">
 Dažniausiai naudojama:<br>
-Kartojimo kortelės (angliškai - flashcards)<br>
+Kartojimo kortelės (flashcards)<br>
 Žodžių/ kalbų mokymosi programėlės<br>
 Kasdieniai testai<br>
 Kartojimo pratimai
@@ -286,7 +285,6 @@ Kartojimo pratimai
 
 <script>
 
-/* scroll animation */
 const cards = document.querySelectorAll(".card");
 
 const observer = new IntersectionObserver(entries=>{
@@ -299,7 +297,6 @@ const observer = new IntersectionObserver(entries=>{
 
 cards.forEach(c=>observer.observe(c));
 
-/* progress bar */
 window.addEventListener("scroll", ()=>{
     let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
