@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kalbų mokymosi metodai</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* BASE */
 body{
     margin:0;
-    font-family:Inter, sans-serif;
+    font-family:Poppins, sans-serif;
     background:#f5f7ff;
     color:#1d1d1f;
     line-height:1.8;
@@ -25,7 +25,7 @@ body.dark{
     color:#e5e7eb;
 }
 
-/* PROGRESS BAR */
+/* PROGRESS */
 #progress{
     position:fixed;
     top:0;
@@ -41,17 +41,30 @@ body.dark{
     background:linear-gradient(135deg,#5b6cff,#7dd3fc);
     color:white;
     text-align:center;
-    padding:100px 20px;
-    transition:0.3s ease;
+    padding:120px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 }
 
-body.dark .hero{
-    background:linear-gradient(135deg,#1e3a8a,#0f172a);
+/* HEADLINE */
+.hero h1{
+    font-size:44px;
+    max-width:800px;
+    margin:0 auto 20px auto;
+    line-height:1.2;
 }
 
-/* HERO BADGES */
+/* TEXT */
+.hero p{
+    font-size:18px;
+    max-width:700px;
+}
+
+/* BADGES */
 .hero-badges{
-    margin-top:20px;
+    margin-top:25px;
     display:flex;
     gap:10px;
     justify-content:center;
@@ -62,7 +75,7 @@ body.dark .hero{
     background:rgba(255,255,255,0.2);
     padding:8px 14px;
     border-radius:999px;
-    font-size:12px;
+    font-size:13px;
 }
 
 /* BUTTON */
@@ -78,9 +91,7 @@ body.dark .hero{
     transition:0.3s;
 }
 
-.btn:hover{
-    transform:scale(1.05);
-}
+.btn:hover{transform:scale(1.05);}
 
 /* SWITCH */
 .switch{
@@ -103,8 +114,6 @@ body.dark .hero{
     background:#cbd5e1;
     border-radius:50px;
     position:relative;
-    cursor:pointer;
-    transition:0.3s;
 }
 
 .slider::before{
@@ -153,7 +162,6 @@ body.dark .card{
     color:#5b6cff;
 }
 
-/* BLOCK */
 .block{
     margin-top:15px;
     padding-top:15px;
@@ -169,20 +177,14 @@ body.dark .card{
 .card.show{
     opacity:1;
     transform:translateY(0);
-    transition:0.7s ease;
-}
-
-/* HOVER */
-.card:hover{
-    transform:translateY(-6px) scale(1.01);
-    box-shadow:0 15px 35px rgba(0,0,0,0.12);
 }
 
 /* MOBILE */
 @media (max-width:768px){
-    .hero{padding:70px 15px;}
+    .hero{padding:80px 15px;}
+    .hero h1{font-size:32px;}
+    .hero p{font-size:16px;}
     .btn{width:90%; display:block; margin:auto;}
-    .container{padding:30px 12px;}
 }
 
 html{scroll-behavior:smooth;}
