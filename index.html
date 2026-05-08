@@ -9,74 +9,73 @@
 
 <style>
 
-/* BASE */
+/* ===================== DESIGN SYSTEM ===================== */
+
+:root{
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --primary:#4f7cff;
+    --primary-dark:#2f5bff;
+    --shadow:0 10px 25px rgba(0,0,0,0.06);
+    --radius:18px;
+}
+
+body.dark{
+    --bg:#0b1220;
+    --card:#111827;
+    --text:#e5e7eb;
+    --muted:#9ca3af;
+    --primary:#4f7cff;
+    --primary-dark:#1e3a8a;
+}
+
+/* ===================== BASE ===================== */
+
 body{
     margin:0;
     font-family:Inter, sans-serif;
-    background:#f5f7ff;
-    color:#1d1d1f;
-    line-height:1.8;
+    background:var(--bg);
+    color:var(--text);
     transition:0.3s ease;
 }
 
-/* DARK MODE */
-body.dark{
-    background:#0b1220;
-    color:#e5e7eb;
+/* ===================== TOP BAR ===================== */
+
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(10px);
+    padding:12px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(0,0,0,0.05);
 }
 
-/* HERO */
-.hero{
-    background:linear-gradient(135deg,#5b6cff,#7dd3fc);
-    color:white;
-    text-align:center;
-    padding:100px 20px;
-    transition:0.3s ease;
+body.dark .topbar{
+    background:rgba(17,24,39,0.7);
+    border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
-body.dark .hero{
-    background:linear-gradient(135deg,#1e3a8a,#0f172a);
-}
+/* ===================== SWITCH ===================== */
 
-/* BUTTON */
-.btn{
-    display:inline-block;
-    margin-top:25px;
-    padding:16px 50px;
-    background:white;
-    color:#5b6cff;
-    font-weight:700;
-    border-radius:999px;
-    text-decoration:none;
-    transition:0.3s;
-}
-
-.btn:hover{
-    transform:scale(1.05);
-}
-
-/* SWITCH WRAPPER */
 .switch{
-    position:fixed;
-    top:20px;
-    right:20px;
     display:flex;
     align-items:center;
     gap:10px;
-    z-index:999;
-    font-size:14px;
+    font-size:13px;
     font-weight:600;
 }
 
-/* HIDE CHECKBOX */
-.switch input{
-    display:none;
-}
+.switch input{display:none;}
 
-/* SLIDER BACKGROUND */
 .slider{
-    width:50px;
-    height:26px;
+    width:44px;
+    height:24px;
     background:#cbd5e1;
     border-radius:50px;
     position:relative;
@@ -84,90 +83,120 @@ body.dark .hero{
     transition:0.3s;
 }
 
-/* KNOB */
 .slider::before{
     content:"";
     position:absolute;
-    width:20px;
-    height:20px;
+    width:18px;
+    height:18px;
     border-radius:50%;
     background:white;
     top:3px;
     left:3px;
     transition:0.3s;
-    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+    box-shadow:0 2px 6px rgba(0,0,0,0.2);
 }
 
-/* CHECKED STATE */
 input:checked + .slider{
-    background:#5b6cff;
+    background:var(--primary);
 }
 
 input:checked + .slider::before{
-    transform:translateX(24px);
+    transform:translateX(20px);
 }
 
-/* TEXT */
-.switch span{
-    user-select:none;
+/* ===================== HERO ===================== */
+
+.hero{
+    text-align:center;
+    padding:70px 20px 40px;
 }
 
-body.dark .switch span{
-    color:#e5e7eb;
+.hero h1{
+    font-size:38px;
+    margin-bottom:10px;
 }
 
-/* CONTAINER */
-.container{
-    max-width:1000px;
+.hero p{
+    max-width:700px;
     margin:auto;
-    padding:60px 20px;
+    color:var(--muted);
+    font-size:16px;
 }
 
-/* CARD */
+/* BUTTON */
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:14px 40px;
+    background:var(--primary);
+    color:white;
+    font-weight:700;
+    border-radius:999px;
+    text-decoration:none;
+    transition:0.2s ease;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    background:var(--primary-dark);
+}
+
+/* ===================== CONTAINER ===================== */
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:30px 20px 80px;
+}
+
+/* ===================== CARD (APP STYLE) ===================== */
+
 .card{
-    background:white;
-    padding:30px;
-    margin-bottom:25px;
-    border-radius:16px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.05);
-    transition:0.3s;
-}
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:25px;
+    margin-bottom:18px;
 
-/* DARK CARDS */
-body.dark .card{
-    background:#111827;
-    color:#e5e7eb;
-}
-
-.card h2{
-    color:#5b6cff;
-}
-
-body.dark .card h2{
-    color:#4f7cff;
-}
-
-.block{
-    margin-top:15px;
-    padding-top:15px;
-    border-top:1px solid #e6e6e6;
-}
-
-body.dark .block{
-    border-top:1px solid #334155;
-}
-
-/* ANIMATION */
-.card{
+    transform:translateY(30px);
     opacity:0;
-    transform:translateY(40px);
+    transition:0.6s ease;
 }
 
 .card.show{
-    opacity:1;
     transform:translateY(0);
-    transition:0.7s ease;
+    opacity:1;
 }
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card h2{
+    margin-top:0;
+    color:var(--primary);
+    font-size:20px;
+}
+
+.card p{
+    color:var(--text);
+    font-size:15px;
+}
+
+/* SMALL LABEL BLOCK */
+.block{
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px solid rgba(0,0,0,0.08);
+    font-size:14px;
+    color:var(--muted);
+}
+
+body.dark .block{
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+/* ===================== ANIMATION ===================== */
 
 html{
     scroll-behavior:smooth;
@@ -178,23 +207,29 @@ html{
 
 <body>
 
-<!-- SWITCH -->
+<!-- TOP BAR -->
+<div class="topbar">
+
+<div><strong>Kalbų mokymasis</strong></div>
+
 <div class="switch">
     <span>Tamsus režimas</span>
-
     <label>
-        <input type="checkbox" id="toggle" onclick="toggleDark()">
+        <input type="checkbox" onclick="toggleDark()">
         <div class="slider"></div>
     </label>
 </div>
 
+</div>
+
+<!-- HERO -->
 <div class="hero">
 
 <h1>Ar Tu žinai kaip geriausiai mokytis kalbų?</h1>
 
 <p>
 Jei ne - nesijaudink, sužinok, kaip tavo smegenys geriausiai įsisavina naują kalbą ir kokie metodai tau veikia efektyviausiai.
-Atlik trumpą testą ir išsiaiškink koks mokymosi tipas TAU tinka labiausiai ir pradėk kalbų mokytis efektyviai!
+Atlik trumpą testą ir išsiaiškink koks mokymosi tipas TAU tinka labiausiai.
 </p>
 
 <a class="btn" href="https://form.typeform.com/to/nb0DBGvb" target="_blank">
@@ -203,57 +238,42 @@ TESTAS
 
 </div>
 
+<!-- CONTENT -->
 <div class="container">
 
 <div class="card">
 <h2>STRUKTŪRINIS METODAS</h2>
-<p>Struktūrinis mokymasis remiasi aiškia sistema, taisyklėmis ir loginiu kalbos supratimu. Šio metodo esmė – ne tik įsiminti žodžius ar frazes, bet ir suprasti, kaip veikia pati kalba. Žmonės, kuriems artimas šis mokymosi būdas, dažniausiai mėgsta tvarką, planą ir aiškų progresą. Mokantis šiuo metodu daug dėmesio skiriama gramatikai, sakinių struktūrai, laikams, taisyklėms bei jų taikymui praktikoje. Dažnai naudojami pratimai, užduotys, rašymas ir analizė. Tokie mokiniai dažnai jaučiasi saugiau tada, kai žino „teisingą“ atsakymą ir supranta, kodėl jis yra teisingas.</p>
+<p>Struktūrinis mokymasis remiasi aiškia sistema, taisyklėmis ir loginiu kalbos supratimu. Šio metodo esmė – ne tik įsiminti žodžius ar frazes, bet ir suprasti, kaip veikia pati kalba. Žmonės, kuriems artimas šis mokymosi būdas, dažniausiai mėgsta tvarką, planą ir aiškų progresą. Mokantis šiuo metodu daug dėmesio skiriama gramatikai, sakinių struktūrai, laikams, taisyklėms bei jų taikymui praktikoje.</p>
 
 <div class="block">
-Dažniausiai naudojama:<br>
-Vadovėliuose esanti informacija<br>
-Gramatikos užduočių lapai<br>
-Užduotys iš pratybų<br>
-Struktūrizuotas ir konkretus mokymosi planas
+Vadovėliai • Gramatika • Pratimai • Planas
 </div>
 </div>
 
 <div class="card">
 <h2>KOMUNIKACIJOS METODAS</h2>
-<p>Komunikacinio mokymosi pagrindas – kalbėjimas ir bendravimas. Šis metodas orientuotas į realų kalbos naudojimą, o ne tobulą taisyklių mokėjimą. Svarbiausia yra gebėti susikalbėti, net jei daromos klaidos. Žmonės, kuriems artimas šis metodas, dažniausiai mokosi aktyviai kalbėdami su kitais, klausydamiesi gyvų pokalbių ir dalyvaudami situacijose, kuriose reikia naudoti kalbą. Jie dažnai greičiau įgauna pasitikėjimo savimi ir mažiau bijo suklysti. Komunikacinis metodas remiasi idėja, kad kalbos geriausiai išmokstama ją naudojant. Todėl mokymasis vyksta per dialogus, diskusijas, grupines veiklas, vaidmenų žaidimus ir realias situacijas.</p>
+<p>Komunikacinio mokymosi pagrindas – kalbėjimas ir bendravimas. Svarbiausia yra gebėti susikalbėti, net jei daromos klaidos. Mokymasis vyksta per realų kalbos naudojimą.</p>
 
 <div class="block">
-Dažniausiai naudojama:<br>
-Pokalbiai su žmonėmis gyvai arba nuotoliu<br>
-Kelionės ir praktika realiose situacijose<br>
-Bendravimo užduotys<br>
-Dialogai
+Pokalbiai • Kelionės • Dialogai • Praktika
 </div>
 </div>
 
 <div class="card">
 <h2>IMERSIJOS METODAS</h2>
-<p>Įtraukiantis mokymasis, dar vadinamas immersija, remiasi natūraliu kalbos „pasinėrimu“. Žmogus mokosi nuolat būdamas apsuptas kalbos – klausydamas muzikos, žiūrėdamas filmus, skaitydamas turinį ar naudodamas socialinius tinklus kita kalba. Šio metodo esmė – ne mokytis dirbtinai, o priprasti prie kalbos taip, kaip vaikai pripranta prie gimtosios kalbos. Informacija įsisavinama per kontekstą, pasikartojimus ir nuolatinį kontaktą su realiu turiniu. Žmonės, kuriems tinka šis metodas, dažnai nemėgsta sausos teorijos ar gramatikos taisyklių. Jie geriau mokosi „jausdami“ kalbą ir stebėdami, kaip ji naudojama realybėje.</p>
+<p>Įtraukiantis mokymasis remiasi nuolatiniu kalbos vartojimu realiame gyvenime – filmai, muzika, socialiniai tinklai, natūralus kontaktas su kalba.</p>
 
 <div class="block">
-Dažniausiai naudojama:<br>
-Filmai, serialai<br>
-Tinklalaidės<br>
-Muzika<br>
-Bendravimas gyvai
+Filmai • Serialai • Muzika • Tinklalaidės
 </div>
 </div>
 
 <div class="card">
 <h2>KARTOJIMO METODAS</h2>
-<p>Kartojimo metodas remiasi nuolatiniu informacijos kartojimu, kol ji tampa automatinė. Šio metodo esmė – dažnas kontaktas su ta pačia informacija, kad žodžiai, frazės ar taisyklės ilgam išliktų atmintyje. Žmonės, kuriems tinka šis mokymosi būdas, dažnai geriausiai įsimena informaciją ją nuolat peržiūrėdami, kartodami ir praktikuodami mažomis dalimis. Jiems svarbus reguliarumas ir rutina. Šis metodas dažnai naudojamas mokantis žodyną, tarimą ar pagrindines frazes. Ypač populiarus yra „spaced repetition“ principas, kai informacija kartojama tam tikrais intervalais tam, kad ji geriau įsitvirtintų ilgalaikėje atmintyje.</p>
+<p>Kartojimo metodas remiasi nuolatiniu informacijos kartojimu, kad ji taptų automatinė ir ilgalaikė atmintis stipri.</p>
 
 <div class="block">
-Dažniausiai naudojama:<br>
-Kartojimo kortelės (angliškai - flashcards)<br>
-Žodžių/ kalbų mokymosi programėlės<br>
-Kasdieniai testai<br>
-Kartojimo pratimai
+Flashcards • Programėlės • Testai • Kartojimas
 </div>
 </div>
 
@@ -261,11 +281,12 @@ Kartojimo pratimai
 
 <script>
 
+/* DARK MODE */
 function toggleDark(){
     document.body.classList.toggle("dark");
 }
 
-/* scroll reveal */
+/* SCROLL REVEAL */
 const cards = document.querySelectorAll(".card");
 
 const observer = new IntersectionObserver(entries=>{
